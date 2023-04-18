@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>All Festivals </h1>
+
+{% for festival in festivals %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ festival.name }}</span>
+      <p>Location: {{ festival.location }}</p>
+      <p>Date: {{ festival.date }}</p>
+      <p>Duration: {{ festival.duration }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
