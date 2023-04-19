@@ -4,16 +4,19 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: beige;
-    border-width: 10px;
-    border-color: red;
-    border-style: double;
+    border: red 5px solid;
+  }
+  .card-content{
+    border: red 5px solid;
+
   }
   .card{
     display: flex;
     display: table-row;
     padding:10px;
     margin:30px;
-    border: red solid 2px;
+    border: red 5px solid;
+
   }
   main {
     flex: 1 0 auto;
