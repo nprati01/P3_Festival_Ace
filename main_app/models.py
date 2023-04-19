@@ -16,6 +16,6 @@ class Festival(models.Model):
 
 class MyFestivalPlanning(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
-    class Meta:
-         unique_together = ('user', 'festival')
+    festivals = models.ManyToManyField(Festival)
+    def __str__(self):
+        return f"{self.user.username}'s Festival Planning"

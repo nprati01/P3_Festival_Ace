@@ -16,7 +16,7 @@
           <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Festival Ace</a></li>
         </ul>
         <ul class="right">
-            <li><a href="{% url 'festivals_index' %}">All Festivals</a></li>
+            <li><a href="{% url 'index' %}">All Festivals</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'my_festivals_index' %}">My Festivals</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>

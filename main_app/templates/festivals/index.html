@@ -4,6 +4,7 @@
 
 {% for festival in festivals %}
   <div class="card">
+    <a href="{% url 'detail' festival.id%}">
     <div class="card-content">
       <span class="card-title">{{ festival.name }}</span>
       <p>Location: {{ festival.location }}</p>

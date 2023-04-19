@@ -4,11 +4,21 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: beige;
+    border-width: 10px;
+    border-color: red;
+    border-style: double;
   }
-
+  .card{
+    display: flex;
+    display: table-row;
+    padding:10px;
+    margin:30px;
+    border: red solid 2px;
+  }
   main {
     flex: 1 0 auto;
   }
+
 
   footer.page-footer {
     padding-top: 0;
