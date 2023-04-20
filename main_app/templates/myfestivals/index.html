@@ -5,12 +5,17 @@
 <ul>
 {% for festival in festivals.all %}
   <div class="card">
+    <a href="{% url 'my_festivals_detail' festival.id%}">
     <div class="card-content">
       <span class="card-title">{{ festival.name }}</span>
       <p>Location: {{ festival.location }}</p>
       <p>Date: {{ festival.date }}</p>
       <p>Duration: {{ festival.duration }}</p>
+
+
+
     </div>
+
     {% empty %}
     <p>You havent added any festivals yet</p>
   </div>

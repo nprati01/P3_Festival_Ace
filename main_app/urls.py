@@ -7,5 +7,7 @@ urlpatterns = [
     path('festivals/<int:festival_id>/', views.festivals_detail, name='detail'),
     path('add_festival/<int:festival_id>/', views.add_festival, name='add_festival'),
     path('myfestivals/', views.my_festivals_index, name='my_festivals_index'),
+    path('myfestivals/<int:festival_id>/', views.my_festivals_detail, name='my_festivals_detail'),
+    path('remove_festival/<int:festival_id>/', views.remove_festival, name='remove_festival'),
 
 ]
