@@ -1,5 +1,6 @@
 
 from django.db import models
+from model_utils import Choices
 from datetime import date
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -31,3 +32,17 @@ class Task(models.Model):
 
      def __str__(self):
         return f"Festival Task {self.title} is due by {self.due_date}"
+
+class Suitecase(models.Model):
+     STATUS = Choices(
+       ('own', ('I own this')),
+       ('need', ('I need to purchase this')),
+       ('borrow', ('I am borrowing this')),
+   )
+     status = models.CharField(
+          max_length=100,
+          choices=STATUS,
+          default=STATUS.own,
+   )
+     item_name = models.CharField(max_length=250)
+     quantity = models.CharField(max_length=250)

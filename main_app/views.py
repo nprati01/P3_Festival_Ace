@@ -2,9 +2,8 @@ from django.contrib.auth import login
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic.edit import CreateView
-
 from .forms import TaskForm
-from .models import Festival, MyFestival, Task
+from .models import Festival, MyFestival, Task, Suitecase
 
 
 
