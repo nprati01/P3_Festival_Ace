@@ -1,3 +1,4 @@
+
 from django.db import models
 from datetime import date
 from django.urls import reverse
@@ -19,14 +20,14 @@ class MyFestival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     festivals = models.ManyToManyField(Festival)
     def __str__(self):
-        return f"{self.user.username}'s Festivals"
+        return f"{self.user.username}'s Festivals and {self.id}, "
 
 class Task(models.Model):
      title = models.CharField(max_length=250)
      completed = models.BooleanField()
      due_date = models.DateField()
      festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
-     my_festival =models.ForeignKey(MyFestival, on_delete=models.CASCADE)
+     my_festival = models.ForeignKey(MyFestival, on_delete=models.CASCADE)
 
      def __str__(self):
         return f"Festival Task {self.title} is due by {self.due_date}"
