@@ -1,7 +1,8 @@
 from django.contrib.auth import login
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Festival, MyFestival, Tasks
+from django.views.generic.edit import CreateView
+from .models import Festival, MyFestival, Task
 
 
 
@@ -42,3 +43,18 @@ def remove_festival(request, festival_id):
     my_festivals = MyFestival.objects.get(user=user)
     my_festivals.festivals.remove(festival_id)
     return redirect('my_festivals_index')
+
+class TaskCreate(CreateView):
+    model = Task
+    fields = ['title', 'completed', 'due_date']
+    template_name ='main_app/task_create.html'
+
+    def form_valid(self, form):
+        festival_id = self.kwargs['festival_id']
+        my_festival = get_object_or_404(MyFestival, user=self.request.user, id=festival_id)
+        form.instance.my_festival = my_festival
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        festival_id = self.kwargs['festival_id']
+        return reverse('my_festivals_detail', festival_id=festival_id)

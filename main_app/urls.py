@@ -9,5 +9,6 @@ urlpatterns = [
     path('myfestivals/', views.my_festivals_index, name='my_festivals_index'),
     path('myfestivals/<int:festival_id>/', views.my_festivals_detail, name='my_festivals_detail'),
     path('remove_festival/<int:festival_id>/', views.remove_festival, name='remove_festival'),
+    path('myfestivals/<int:festival_id>/create/', views.TaskCreate.as_view(), name='tasks_create')
 
 ]

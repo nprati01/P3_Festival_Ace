@@ -21,10 +21,12 @@ class MyFestival(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Festivals"
 
-class Tasks(models.Model):
+class Task(models.Model):
      title = models.CharField(max_length=250)
      completed = models.BooleanField()
      due_date = models.DateField()
+     festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
+     my_festival =models.ForeignKey(MyFestival, on_delete=models.CASCADE)
 
      def __str__(self):
-        return f"Festival Tasks {self.title}'s "
+        return f"Festival Task {self.title} is due by {self.due_date}"
