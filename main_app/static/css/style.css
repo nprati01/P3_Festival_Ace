@@ -3,21 +3,14 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: beige;
-    border: red 5px solid;
-  }
-  .card-content{
-    border: red 5px solid;
+    background-color: white;
 
   }
-  .card{
-    display: flex;
-    display: table-row;
-    padding:10px;
-    margin:30px;
-    border: red 5px solid;
 
-  }
+
+
+
+  
   main {
     flex: 1 0 auto;
   }

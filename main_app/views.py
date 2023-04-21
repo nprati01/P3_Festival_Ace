@@ -63,6 +63,8 @@ def create_task(request, festival_id, my_festival):
     return render(request, 'main_app/create_task.html', {'form': form})
 
 
+
+
 def create_suitcase(request, festival_id, my_festival):
     festival = Festival.objects.get(id=festival_id)
     print(festival)
