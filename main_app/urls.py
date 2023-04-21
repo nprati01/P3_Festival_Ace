@@ -10,6 +10,6 @@ urlpatterns = [
     path('myfestivals/<int:festival_id>/', views.my_festivals_detail, name='my_festivals_detail'),
     path('remove_festival/<int:festival_id>/', views.remove_festival, name='remove_festival'),
     path('myfestivals/<int:festival_id>/create_task/<int:my_festival>/', views.create_task, name='create_task'),
-    path('myfestivals/<int:festival_id>/create_suitecase/<int:my_festival>/', views.create_task, name='create_suitecase'),
+    path('myfestivals/<int:festival_id>/create_suitcase/<int:my_festival>/', views.create_suitcase, name='create_suitcase'),
 
 ]

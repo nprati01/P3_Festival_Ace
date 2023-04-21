@@ -33,16 +33,18 @@ class Task(models.Model):
      def __str__(self):
         return f"Festival Task {self.title} is due by {self.due_date}"
 
-class Suitecase(models.Model):
+class Suitcase(models.Model):
      STATUS = Choices(
        ('own', ('I own this')),
        ('need', ('I need to purchase this')),
        ('borrow', ('I am borrowing this')),
-   )
+       )
+     item_name = models.CharField(max_length=250)
+     quantity = models.CharField(max_length=250)
      status = models.CharField(
           max_length=100,
           choices=STATUS,
           default=STATUS.own,
    )
-     item_name = models.CharField(max_length=250)
-     quantity = models.CharField(max_length=250)
+     festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
+     my_festival = models.ForeignKey(MyFestival, on_delete=models.CASCADE)

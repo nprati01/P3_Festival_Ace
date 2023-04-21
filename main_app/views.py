@@ -2,8 +2,8 @@ from django.contrib.auth import login
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic.edit import CreateView
-from .forms import TaskForm
-from .models import Festival, MyFestival, Task, Suitecase
+from .forms import TaskForm, SuitcaseForm
+from .models import Festival, MyFestival, Task, Suitcase
 
 
 
@@ -45,7 +45,6 @@ def remove_festival(request, festival_id):
     return redirect('my_festivals_index')
 
 
-
 def create_task(request, festival_id, my_festival):
     festival = Festival.objects.get(id=festival_id)
     print(festival)
@@ -62,3 +61,21 @@ def create_task(request, festival_id, my_festival):
     else:
         form = TaskForm()
     return render(request, 'main_app/create_task.html', {'form': form})
+
+
+def create_suitcase(request, festival_id, my_festival):
+    festival = Festival.objects.get(id=festival_id)
+    print(festival)
+    my_fest = MyFestival.objects.get(pk=my_festival)
+    print(my_fest)
+    if request.method == 'POST':
+        form = SuitcaseForm(request.POST)
+        if form.is_valid():
+            suitcase = form.save(commit=False)
+            suitcase.festival_id = festival_id
+            suitcase.my_festival = my_fest
+            suitcase.save()
+            return redirect('my_festivals_detail', festival_id=festival_id)
+    else:
+        form = SuitcaseForm()
+    return render(request, 'myfestivals/create_suitcase.html', {'form': form})
