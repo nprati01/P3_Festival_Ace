@@ -22,29 +22,37 @@
 
 
 <h3>Tasks</h3>
+<a href="{% url 'create_task'  festival.id my_festival.id %}">Create new task</a>
 <div class = "row">
     <div class="col s6">
-        {% for task in my_festival.task_set.all %}
+        {% for task in tasks %}
         <div class="card">
             <div class="card-content">
             <span class="card-title">{{ task.title }}</span>
             <p>Due Date: {{ task.due_date }}</p>
-            <p>Is completed: {{task.completed.value|yesno:"Yes,No" }}</p>
+            <p>Is completed: {{ task.completed }}</p>
+            <a href="{% url 'update_task' festival.id task.id%}">Edit</a>
+            <a href="{% url 'delete_task' festival.id task.id%}">Delete</a>
             </div>
             {% empty %}
             <p> No Tasks yet.</p>
             {% endfor %}
         </div>
+        <div class="card-action">
+
+
+
+        </div>
     </div>
 </div>
-<a href="{% url 'create_task' festival.id my_festival.id %}">Create new task</a>
+
 
 
 <h3>Suitecase</h3>
 <p>Everything You want to pack</p>
 <div class = "row">
     <div class="col s6">
-        {% for suitcase in my_festival.suitcase_set.all %}
+        {% for suitcase in suitecases %}
         <div class="card">
             <div class="card-content">
             <p>{{suitcase.quantity}} | {{ suitcase.item_name }} | {{suitcase.status}}

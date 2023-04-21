@@ -21,7 +21,7 @@ class MyFestival(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     festivals = models.ManyToManyField(Festival)
     def __str__(self):
-        return f"{self.user.username}'s Festivals and {self.id}, "
+        return f"{self.user.username}is user Festivals with Id {self.id}, "
 
 class Task(models.Model):
      title = models.CharField(max_length=250)

@@ -1,8 +1,11 @@
-{% extends 'base.html' %}
 
+
+
+
+{% extends 'base.html' %}
 {% block content %}
 
-  <h1>Add Task</h1>
+<h1>Edit Task</h1>
 
   <form action="" method="POST">
 
@@ -10,8 +13,11 @@
     <table>
       <input type="hidden" name="festival_id" value="">
 
+
       {{ form.as_table }}
     </table>
     <input type="submit" value="Submit!" class="btn">
   </form>
+
+
 {% endblock %}
