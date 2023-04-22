@@ -29,11 +29,9 @@ def my_festivals_detail(request, festival_id):
     festival = Festival.objects.get(pk=festival_id)
     tasks = Task.objects.filter(festival_id=festival_id, my_festival=my_festival.id)
     suitcases = Suitcase.objects.filter(festival_id=festival_id, my_festival=my_festival.id)
-    print(f"festival id is, {festival_id}")
-    print(my_festival.id)
-
     task_form = TaskForm()
-    return render(request, 'myfestivals/detail.html', { 'festival':festival, 'my_festival': my_festival, 'tasks': tasks, 'task_form': task_form})
+    suitcase_form = SuitcaseForm()
+    return render(request, 'myfestivals/detail.html', { 'festival':festival, 'my_festival': my_festival, 'tasks': tasks, 'task_form': task_form, 'suitcases': suitcases, 'suitcase_form': suitcase_form })
 
 def add_festival(request, festival_id):
     festival = Festival.objects.get(pk=festival_id)
@@ -47,7 +45,6 @@ def remove_festival(request, festival_id):
     my_festivals = MyFestival.objects.get(user=user)
     my_festivals.festivals.remove(festival_id)
     return redirect('my_festivals_index')
-
 
 def create_task(request, festival_id, my_festival):
     my_fest = MyFestival.objects.get(pk=my_festival)
@@ -68,7 +65,7 @@ def create_task(request, festival_id, my_festival):
 
 class TaskUpdate(UpdateView):
     model = Task
-    fields = ['completed' 'title']
+    fields = ['completed', 'title']
     success_url = '/'
     def get_success_url(self):
         festival_id=self.object.festival.id
@@ -96,3 +93,18 @@ def create_suitcase(request, festival_id, my_festival):
     else:
         form = SuitcaseForm()
     return render(request, 'myfestivals/create_suitcase.html', {'form': form})
+
+class SuitcaseUpdate(UpdateView):
+    model = Suitcase
+    fields = ['item_name', 'quantity', 'status']
+    success_url = '/'
+    def get_success_url(self):
+        festival_id=self.object.festival.id
+        return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
+
+class SuitcaseDelete(DeleteView):
+    model = Suitcase
+    success_url = '/'
+    def get_success_url(self):
+        festival_id=self.object.festival.id
+        return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
