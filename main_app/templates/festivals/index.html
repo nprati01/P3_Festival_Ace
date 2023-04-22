@@ -2,20 +2,26 @@
 {% block content %}
 <h1>All Festivals </h1>
 
-{% for festival in festivals %}
-  <div class="card" style="width: 18rem;">
-    {%load static%}
-    <img src="{% static 'main_app/home.jpg' %}" class="card-img-top" alt="image-placeholder">
-    <div class="card-body">
-      <h5 class="card-title">{{ festival.name }}</h5>
-      <p class="card-text">Location: {{ festival.location }}</p>
-      <p class="card-text">Date: {{ festival.date }}</p>
-      <p class="card-text">Duration: {{ festival.duration }}</p>
-      <form action="{% url 'add_festival' festival.id %}" method="POST">
-        {% csrf_token %}
-        <a href="{% url 'detail' festival.id%}" class="btn btn-primary">Details</a>
-    </div>
-  </div>
-{% endfor %}
+
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+  {% for festival in festivals %}
+      <div class="card" style="width: 18rem; margin: 30px">
+        {%load static%}
+        <img src="{% static 'main_app/home.jpg' %}" class="card-img-top" alt="image-placeholder">
+        <div class="card-body">
+          <h5 class="card-title">{{ festival.name }}</h5>
+          <p class="card-text">Location: {{ festival.location }}</p>
+          <p class="card-text">Date: {{ festival.date }}</p>
+          <p class="card-text">Duration: {{ festival.duration }}</p>
+          
+            <a href="{% url 'detail' festival.id%}" class="btn btn-primary">Details</a>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+</div>
+
+
 
 {% endblock %}

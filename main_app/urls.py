@@ -15,5 +15,6 @@ urlpatterns = [
     path('myfestivals/<int:festival_id>/create_suitcase/<int:my_festival>/', views.create_suitcase, name='create_suitcase'),
     path('myfestivals/<int:festival_id>/update_suitecase/<int:pk>', views.SuitcaseUpdate.as_view(), name='update_suitcase'),
     path('myfestivals/<int:festival_id>/delete_suitcase/<int:pk>', views.SuitcaseDelete.as_view(), name='delete_suitcase'),
+    path('accounts/signup/', views.signup, name='signup'),
 
 ]

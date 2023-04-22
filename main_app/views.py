@@ -1,4 +1,7 @@
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -20,10 +23,11 @@ def festivals_detail(request, festival_id):
     festival = Festival.objects.get(id=festival_id)
     return render(request, 'festivals/detail.html', { 'festival': festival})
 
+@login_required
 def my_festivals_index(request):
     festivals = Festival.objects.filter(myfestival__user=request.user)
     return render(request, 'myfestivals/index.html', {'festivals': festivals})
-
+@login_required
 def my_festivals_detail(request, festival_id):
     my_festival = MyFestival.objects.get(user=request.user)
     festival = Festival.objects.get(pk=festival_id)
@@ -33,12 +37,14 @@ def my_festivals_detail(request, festival_id):
     suitcase_form = SuitcaseForm()
     return render(request, 'myfestivals/detail.html', { 'festival':festival, 'my_festival': my_festival, 'tasks': tasks, 'task_form': task_form, 'suitcases': suitcases, 'suitcase_form': suitcase_form })
 
+@login_required
 def add_festival(request, festival_id):
     festival = Festival.objects.get(pk=festival_id)
     my_festivals = MyFestival.objects.get(user = request.user)
     my_festivals.festivals.add(festival)
     return redirect('my_festivals_index')
 
+@login_required
 def remove_festival(request, festival_id):
     user = request.user
     festival = Festival.objects.get(id=festival_id)
@@ -46,6 +52,7 @@ def remove_festival(request, festival_id):
     my_festivals.festivals.remove(festival_id)
     return redirect('my_festivals_index')
 
+@login_required
 def create_task(request, festival_id, my_festival):
     my_fest = MyFestival.objects.get(pk=my_festival)
     print(my_fest)
@@ -63,7 +70,7 @@ def create_task(request, festival_id, my_festival):
     return render(request, 'main_app/create_task.html', {'form': form})
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['completed', 'title']
     success_url = '/'
@@ -71,7 +78,8 @@ class TaskUpdate(UpdateView):
         festival_id=self.object.festival.id
         return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
 
-class TaskDelete(DeleteView):
+
+class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = '/'
     def get_success_url(self):
@@ -79,7 +87,7 @@ class TaskDelete(DeleteView):
         return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
 
 
-
+@login_required
 def create_suitcase(request, festival_id, my_festival):
     my_fest = MyFestival.objects.get(pk=my_festival)
     if request.method == 'POST':
@@ -94,7 +102,7 @@ def create_suitcase(request, festival_id, my_festival):
         form = SuitcaseForm()
     return render(request, 'myfestivals/create_suitcase.html', {'form': form})
 
-class SuitcaseUpdate(UpdateView):
+class SuitcaseUpdate(LoginRequiredMixin, UpdateView):
     model = Suitcase
     fields = ['item_name', 'quantity', 'status']
     success_url = '/'
@@ -102,9 +110,24 @@ class SuitcaseUpdate(UpdateView):
         festival_id=self.object.festival.id
         return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
 
-class SuitcaseDelete(DeleteView):
+class SuitcaseDelete(LoginRequiredMixin, DeleteView):
     model = Suitcase
     success_url = '/'
     def get_success_url(self):
         festival_id=self.object.festival.id
         return reverse('my_festivals_detail', kwargs={'festival_id':festival_id})
+
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)

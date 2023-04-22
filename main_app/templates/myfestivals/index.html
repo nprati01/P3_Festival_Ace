@@ -1,27 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>My Festivals </h1>
-
-<ul>
-{% for festival in festivals.all %}
-  <div class="card">
-    <a href="{% url 'my_festivals_detail' festival.id%}">
-    <div class="card-content">
-      <span class="card-title">{{ festival.name }}</span>
-      <p>Location: {{ festival.location }}</p>
-      <p>Date: {{ festival.date }}</p>
-      <p>Duration: {{ festival.duration }}</p>
 
 
-
-    </div>
-
-    {% empty %}
-    <p>You havent added any festivals yet</p>
+<div class="container margin-top:20px;"
+<div class="row mb-5">
+  <div class="col-md-8 col-xl-6 text-center mx-auto">
+      <h2>My Festivals</h2>
+      <p>Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
   </div>
-{% endfor %}
-</ul>
+</div>
+</div>
+
+
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+    {% for festival in festivals.all %}
+        <div class="card" style="width: 30rem; margin: 30px">
+          {%load static%}
+          <img src="{% static 'main_app/home.jpg' %}" class="card-img-top" alt="image-placeholder">
+          <div class="card-body">
+            <h5 class="card-title">{{ festival.name }}</h5>
+            <p class="card-text">Location: {{ festival.location }}</p>
+            <p class="card-text">Date: {{ festival.date }}</p>
+            <p class="card-text">Duration: {{ festival.duration }}</p>
+
+              <a href="{% url 'my_festivals_detail' festival.id%}" class="btn btn-primary">Details</a>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+  </div>
 
 
 
-{% endblock %}
+  {% endblock %}
