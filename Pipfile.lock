@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "bb98f27a4164e08bdb7583c8a58cf6b8246ac445eb74cb1b072871c1fd87c159"
+            "sha256": "e8d638327b2ac118cc236f1030b9da2b13bcb46ce89d3db47e12fd85ecee7497"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -46,6 +46,14 @@
             ],
             "index": "pypi",
             "version": "==1.1.2"
+        },
+        "django-tempus-dominus": {
+            "hashes": [
+                "sha256:a254c4550287e8f4e958c5d8dd9e39eec0a15aaad7469ad182b46f7f888e97ec",
+                "sha256:f449e0e4dfde3b312aa153b552f83aa80c7b58f980ee75ba82b0e9cf6c35ff3c"
+            ],
+            "index": "pypi",
+            "version": "==5.1.2.17"
         },
         "gunicorn": {
             "hashes": [
@@ -125,11 +133,11 @@
         },
         "setuptools": {
             "hashes": [
-                "sha256:888be97fde8cc3afd60f7784e678fa29ee13c4e5362daa7104a93bba33646c50",
-                "sha256:b7e53a01c6c654d26d2999ee033d8c6125e5fa55f03b7b193f937ae7ac999f22"
+                "sha256:23aaf86b85ca52ceb801d32703f12d77517b2556af839621c641fca11287952b",
+                "sha256:f104fa03692a2602fa0fec6c6a9e63b6c8a968de13e17c026957dd1f53d80990"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==67.7.0"
+            "version": "==67.7.2"
         },
         "sqlparse": {
             "hashes": [

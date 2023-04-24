@@ -8,6 +8,7 @@ django = "*"
 psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
+django-tempus-dominus = "*"
 
 [dev-packages]
 
