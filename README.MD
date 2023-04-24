@@ -63,9 +63,9 @@ https://app.pitch.com/app/presentation/8a0d9f95-88e3-45b6-afdb-30ddf9079324/aa8d
 
 ## User
 - Allow the user to organize packing list by category of items--ie if camping they would have a sub section within their list for camping needs
-- Allow users to add memebers to thier planning documents so everyone that is attending the festival can be on the same planning page
+- Allow users to add members to thier planning documents so everyone that is attending the festival can be on the same planning page
 - Allow user to check a task is done and have it update on the page instead of going to a form
-- Include some sort of budget functionality where the user can keep track of estimatesd cost vs actual cost
+- Include some sort of budget functionality where the user can keep track of estimated cost vs actual cost
 - When viewing the festival detail page-- they page would have links to purchase tickets, include information about the genre of festival, map view of the location of  the festival and the lineup poster for the festival
 - Include a data object in the tasks list to link information to the task--like if the task was to purchase tickets user could include a link to thier ticket information when marking the task as complete
 - Enhance CSS across the application
