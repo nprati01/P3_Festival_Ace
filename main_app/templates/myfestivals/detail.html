@@ -51,7 +51,7 @@
                 </div>
 
                 {% empty %}
-                <h5> Enter your tasks to start planning </h5>
+                <p style="font-family: 'Abel', sans-serif; font-weight:bold; font-size:20px;"> Enter your tasks to start planning </p>
                 {% endfor %}
                 <a href="{% url 'create_task' festival.id my_festival.id %}" class="btn btn-info">Add Task</a>
             </div>
@@ -71,7 +71,7 @@
                     </ul>
                 </div>
                 {% empty %}
-                <p> You need to create your packing list.</p>
+               <p style="font-family: 'Abel', sans-serif; font-weight:bold; font-size:20px;"> You need to create your packing list.</p></span>
                 {% endfor %}
             </div>
             <div class="suitcase-btn mb-3">

@@ -38,6 +38,7 @@ _Log in and:
 - Bootstrap
 - Python
 - Django
+- postgresql
 - JavaScript
 - Heroku
 
@@ -73,6 +74,7 @@ https://app.pitch.com/app/presentation/8a0d9f95-88e3-45b6-afdb-30ddf9079324/aa8d
 
 ## Attributions:
 
+https://www.musicfestivalwizard.com/
 https://docs.djangoproject.com/en/4.2/
 https://getbootstrap.com/docs/5.3/getting-started/introduction/
 https://mdbootstrap.com/
