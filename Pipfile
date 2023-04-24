@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
 django-tempus-dominus = "*"
+django-model-utils = "*"
 
 [dev-packages]
 
