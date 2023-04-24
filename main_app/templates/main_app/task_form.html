@@ -1,23 +1,38 @@
 
-
-
-
 {% extends 'base.html' %}
 {% block content %}
+{{ form.media }}
+<section class="py-4 py-xl-5">
+  <div class="container">
+      <div class="row mb-5">
+          <div class="col-md-8 col-xl-6 text-center mx-auto">
+              <h2>Edit Task</h2>
+              <p> Did you complete this task? Way to go!</p>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6 col-xl-4">
+            <div class="card bg-ssuccess bg-opacity-10 border border-success rounded end mb-3">
+              <div class="card-body d-flex flex-column align-items-center fw-bold py-3">
+                <div class="card-icon-top mb-3 align-items-center">
+                  {%load static%}
+                  <img src="{% static 'main_app/to-do-list.png' %}" height="150" width="150">
+                </div>
+                <form  action="" method="POST">
+                  {% csrf_token %}
+                  <div class="mb-3 py-4">
+                    <input type="hidden" name="festival_id" value="">
 
-<h1>Edit Task</h1>
-
-  <form action="" method="POST">
-
-    {% csrf_token %}
-    <table>
-      <input type="hidden" name="festival_id" value="">
-
-
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
-
+                    {{ form.as_div }}
+                    <div class="d-grid gap-2 mx-auto my-4 ">
+                      <input type="submit" value="Submit!" class="btn btn-info d-inline">
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
 
 {% endblock %}

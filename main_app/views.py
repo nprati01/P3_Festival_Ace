@@ -39,10 +39,13 @@ def my_festivals_detail(request, festival_id):
 
 @login_required
 def add_festival(request, festival_id):
-    festival = Festival.objects.get(pk=festival_id)
-    my_festivals = MyFestival.objects.get(user = request.user)
+    festival = Festival.objects.get(id=festival_id)
+    my_festivals, created= MyFestival.objects.get_or_create(user = request.user)
     my_festivals.festivals.add(festival)
     return redirect('my_festivals_index')
+
+
+
 
 @login_required
 def remove_festival(request, festival_id):
@@ -72,7 +75,7 @@ def create_task(request, festival_id, my_festival):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['completed', 'title']
+    fields = ['completed', 'title', 'due_date']
     success_url = '/'
     def get_success_url(self):
         festival_id=self.object.festival.id

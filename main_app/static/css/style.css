@@ -1,19 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Bungee+Shade&family=Permanent+Marker&display=swap');
 
-body {
+body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: white;
+    background-color:rgba(119, 239, 189, .6)
+
+
 
   }
 
-
-
-
-  
-  main {
-    flex: 1 0 auto;
+  .navbar{
+    background-color: var(--bs-cyan);
   }
+  .nav-item{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+  }
+  .navbar-brand{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+
+  }
+  /* @media (max-width: 1199.98px) {
+    .custom-class {
+      display: inline-block;
+    } */
+    .card{
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+
+    cursor: pointer;
+  }
+
+  .card:hover{
+       transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+
+  .title{
+    margin: 30px;
+    text-align: center;
+  }
+  .home-title{
+    font-family: 'Permanent Marker', cursive;
+
+    font-size: 60px;
+  }
+  .home-intro{
+    font-family: 'Abel', sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+  }
+
+  .card-title{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+
+  }
+
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+  .parallax{
+    background-image: url("/static/main_app/paradiseblue.jpeg");
+    min-height: 1000px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  .container{
+
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+
+  .title-detail{
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Permanent Marker', cursive;
+
+    font-size: 80px;
+
+  }
+  .card-text{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+
+  }
+
+.card-content-bottom{
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 18px;
+
+}
+.col-md-6{
+  margin-top: 30px;
+  align-self: center;
+}
+.container-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-content{
+  background-color: #fff;
+  padding: 30px;
+  margin: 200px;
+  border-radius: 5px;
+
+}
+.detail-detail{
+  font-size: 24px;
+  font-family: 'Bebas Neue', cursive;
+
+}
+.warning{
+  color: red;
+}
+.bold{
+  font-weight: 700;
+
+}
+.task-title{
+  display:inline-block;
+  line-height: 1;
+  align-items: baseline;
+
+}
+.suitcase-title{
+  display:inline-block;
+  line-height: 1;
+  align-items: baseline;
+
+
+}
+
+.suitcase-btn{
+  margin-top: 30px;
+
+}
+
+label{
+  display: inline-block;
+  padding: 10px;
+  align-self: center;
+  align-content: center;
+}
+.myfest-intro{
+  font-family: 'Abel', sans-serif;
+  font-weight: bold;
+}
+
+
 
 
   footer.page-footer {

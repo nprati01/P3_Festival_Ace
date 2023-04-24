@@ -2,21 +2,23 @@
 {% block content %}
 
 
-<div class="container margin-top:20px;"
+<div class="container mt-5-mb-1">
 <div class="row mb-5">
-  <div class="col-md-8 col-xl-6 text-center mx-auto">
-      <h2>My Festivals</h2>
-      <p>Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
+  <div class="col text-center mx-auto my-2 py-0 justify-content-center">
+      <h1 class="home-title">My Festivals</h1>
+      <div class="myfest-intro"style="justify content:center">
+      <h2 class="myfest-intro">Here is your festival list. Simply click on the details button to start planning, you can add tasks to hekp you prepare and create a packing list for the items you might need. If your not sure where to start visit  Festival Ace Guide.</h2>
+      </div>
   </div>
 </div>
 </div>
 
 
-  <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
     {% for festival in festivals.all %}
-        <div class="card" style="width: 30rem; margin: 30px">
+        <div class="card" style="width: 30rem; margin: 30px ">
           {%load static%}
-          <img src="{% static 'main_app/home.jpg' %}" class="card-img-top" alt="image-placeholder">
+          <img src="{% static 'main_app/home.jpg' %}" class="card-img-top img-fluid" alt="image-placeholder">
           <div class="card-body">
             <h5 class="card-title">{{ festival.name }}</h5>
             <p class="card-text">Location: {{ festival.location }}</p>

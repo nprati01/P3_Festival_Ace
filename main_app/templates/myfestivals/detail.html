@@ -1,69 +1,90 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Plan Your Festival</h1>
-<div class = "row">
-    <div class="col s6">
-        <div class="card">
-            <div class="card-content">
-            <span class="card-title">{{ festival.name }}</span>
-            <p>Location: {{ festival.location }}</p>
-            <p>Date: {{ festival.date }}</p>
-            <p>Duration: {{ festival.duration }}</p>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <h1 class="title-detail">Start Planning!</h1>
+        <div class="col-md-12">
+            <div class="card text-bg-dark" style="width: 60rem; margin:auto;">
+                {%load static%}
+                <img src="{% static 'main_app/MyFestivalDetail.jpg' %}" class="card-img-top" alt="image-placeholder style="">
+                <div class="card-img-overlay">
+                <div class="card-content-bottom">
+                    <h2 class="card-title">{{ festival.name }}</h2>
+                    <p class="card-text"><span style="font-weight: bold;">Location:</span> {{ festival.location }}</p>
+                    <p class="card-text"><span style="font-weight: bold;">Date:</span> {{ festival.date }}</p>
+                    <p class="card-text"><span style="font-weight: bold;">Duration:</span> {{ festival.duration }}</p>
+                    <p class="card-text"><span style="font-weight: bold;">Details</span> {{festival.description }}</p>
+                    <form action="{% url 'remove_festival' festival.id  %}" method="post">
+                        {% csrf_token %}
+                        <h6 style="font-family: 'Abel', sans-serif;">Change your mind?</h6>
+                        <button type="button" class="btn btn-info">Delete</button>
+                    </form>
+                </div>
             </div>
-            <form action="{% url 'remove_festival' festival.id  %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Remove</button>
-              </form>
-         </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 d-inline">
+            <h1 class="task-title" style="font-family: 'Permanent Marker', cursive;">Tasks <span class="material-symbols-outlined" style="font-size: 35px; display: inline-block;">checklist_rtl</span>
+            </h1>
+            <p style="font-family: 'Abel', sans-serif;
+            font-weight: bold; font-size: 24px;"> Track all of your festival planning tasks with ease</p>
+            <div class="card mb-5">
+                {% for task in tasks %}
+                <div class="card-content">
+                    <!-- need to change this have a priority status  -->
+                    <ol class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-1 me-auto">
+                                <div class="fw-bold" style="font-family: 'Bebas Neue', cursive; font-size: 20px;">
+                                    {{ task.title }}
+                                </div>
+                                <span style="font-family: 'Abel', sans-serif; font-weight: bold; font-size: 18px;">Complete by: {{ task.due_date }}</span>
+                                Status: {{ task.completed|yesno:"Done, Not Done"}}
+                                <span class="btn-group" role="group"><a href="{% url 'update_task' festival.id task.id%}" class="btn btn-primary btn-sm" type="button"><span class="material-symbols-outlined">edit</span></a><a href="{% url 'delete_task' festival.id task.id%}" class="btn btn-info btn-sm" type="button"><span class="material-symbols-outlined" style="outline-color: white;">delete</span></a></span>
+                            </div>
+                        </li>
+                    </ol>
+
+                </div>
+
+                {% empty %}
+                <h5> Enter your tasks to start planning </h5>
+                {% endfor %}
+                <a href="{% url 'create_task' festival.id my_festival.id %}" class="btn btn-info">Add Task</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-inline">
+            <h1 class="suitcase-title" style="font-family: 'Permanent Marker', cursive;">Suitcase <span class="material-symbols-outlined" style="font-size: 35px;display: inline-block; align-items:end ;">luggage</span></h1>
+            <!-- Need to change this to a table -->
+            <p style="font-family: 'Abel', sans-serif;
+            font-weight: bold; font-size: 24px;">Everything You want to pack</p>
+            <div class="card">
+                {% for suitcase in suitcases %}
+                <div class="card-content">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <span style="font-family:'Bebas Neue', cursive;font-size: 26px;">{{ suitcase.item_name }}: </span><span style="font-family: 'Abel', sans-serif; font-weight:bold; font-size: 26px;"><p>{{suitcase.quantity}} {{suitcase.status}}</p></span> <span class="btn-group" role="group"><a href="{% url 'update_suitcase' festival.id suitcase.id%}">Edit</a><a href="{% url 'delete_suitcase' festival.id suitcase.id%}"><span class="material-symbols-outlined">delete</span></a></span>
+                        </li>
+                    </ul>
+                </div>
+                {% empty %}
+                <p> You need to create your packing list.</p>
+                {% endfor %}
+            </div>
+            <div class="suitcase-btn mb-3">
+            <a href="{% url 'create_suitcase' festival.id my_festival.id %}" class="btn btn-info">Add To list</a>
+            </div>
         </div>
     </div>
 </div>
 
 
-<h3>Tasks</h3>
-<a href="{% url 'create_task'  festival.id my_festival.id %}">Create new task</a>
-<div class = "row">
-    <div class="col s6">
-        {% for task in tasks %}
-        <div class="card">
-            <div class="card-content">
-            <span class="card-title">{{ task.title }}</span>
-            <p>Due Date: {{ task.due_date }}</p>
-            <p>Is completed: {{ task.completed }}</p>
-            <a href="{% url 'update_task' festival.id task.id%}">Edit</a>
-            <a href="{% url 'delete_task' festival.id task.id%}">Delete</a>
-            </div>
-            {% empty %}
-            <p> No Tasks yet.</p>
-            {% endfor %}
-        </div>
-        <div class="card-action">
 
 
 
-        </div>
-    </div>
-</div>
 
 
-
-<h3>Suitcase</h3>
-<p>Everything You want to pack</p>
-<div class = "row">
-    <div class="col s6">
-        {% for suitcase in suitcases %}
-        <div class="card">
-            <div class="card-content">
-            <p>{{suitcase.quantity}} | {{ suitcase.item_name }} | {{suitcase.status}}
-            <a href="{% url 'update_suitcase' festival.id suitcase.id%}">Edit</a>
-            <a href="{% url 'delete_suitcase' festival.id suitcase.id%}">Delete</a>
-            </div>
-            {% empty %}
-            <p> You need to create your packing list.</p>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<a href="{% url 'create_suitcase' festival.id my_festival.id %}">Add the items you want to pack</a>
 {% endblock %}

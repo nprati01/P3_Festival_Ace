@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block content%}
+{% load static %}
 
-    <h1>Festival Ace</h1>
-    {% load static %}
-    <img src="{% static 'main_app/home.jpg' %}" class="img-fluid" alt="home">
+<div class="title">
+    <h1 class="home-title">Festival Ace</h1>
+    <h4 class="home-intro">Dont just dream of the perfect festival experience make it happen </h4>
+</div>
+<div class="container my-4">
+<img src="{% static 'main_app/home.jpg' %}" class="img-fluid" alt="home">
+</div>
 
 {% endblock %}

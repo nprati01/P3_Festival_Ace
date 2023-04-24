@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>All Festivals </h1>
+<div class="contianer mt-5 mb-2">
+  <h1 class="home-title" style="text-align: center; ">All Festivals </h1>
+</div>
 
-
-
-<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+<div class="row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
   {% for festival in festivals %}
-      <div class="card" style="width: 18rem; margin: 30px">
+
+      <div class="card card-border-info" style="width: 18rem; margin: 30px; padding:0">
         {%load static%}
-        <img src="{% static 'main_app/home.jpg' %}" class="card-img-top" alt="image-placeholder">
-        <div class="card-body">
+        <img src="{% static 'main_app/home.jpg' %}" class="card-img-top mx-auto" alt="image-placeholder">
+        <div class="card-body" style="">
           <h5 class="card-title">{{ festival.name }}</h5>
-          <p class="card-text">Location: {{ festival.location }}</p>
-          <p class="card-text">Date: {{ festival.date }}</p>
-          <p class="card-text">Duration: {{ festival.duration }}</p>
-          
-            <a href="{% url 'detail' festival.id%}" class="btn btn-primary">Details</a>
+          <p class="card-text"><span style="font-weight: bold;">Location:</span> {{ festival.location }}</p>
+          <p class="card-text"><span style="font-weight: bold;">Date:</span> {{ festival.date }}</p>
+          <p class="card-text"><span style="font-weight: bold;">Duration:</span> {{ festival.duration }}</p>
+
+            <a href="{% url 'detail' festival.id %}" class="btn btn-info btn-outline-light">Details</a>
           </form>
         </div>
       </div>
       {% endfor %}
+
 </div>
 
 

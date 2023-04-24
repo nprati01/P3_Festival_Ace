@@ -25,7 +25,7 @@ class MyFestival(models.Model):
 
 class Task(models.Model):
      title = models.CharField(max_length=250)
-     completed = models.BooleanField()
+     completed = models.BooleanField(default=False)
      due_date = models.DateField()
      festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
      my_festival = models.ForeignKey(MyFestival, on_delete=models.CASCADE)
@@ -35,16 +35,17 @@ class Task(models.Model):
 
 class Suitcase(models.Model):
      STATUS = Choices(
-       ('own', ('I own this')),
-       ('need', ('I need to purchase this')),
-       ('borrow', ('I am borrowing this')),
+       ('I own this', ('I own this')),
+       ('I need to purchase', ('I need to purchase this')),
+       ('I will borrow', ('I am borrowing this')),
        )
      item_name = models.CharField(max_length=250)
      quantity = models.CharField(max_length=250)
      status = models.CharField(
           max_length=100,
           choices=STATUS,
-          default=STATUS.own,
+          default=STATUS['I own this']
+
    )
      festival = models.ForeignKey(Festival, on_delete=models.CASCADE)
      my_festival = models.ForeignKey(MyFestival, on_delete=models.CASCADE)

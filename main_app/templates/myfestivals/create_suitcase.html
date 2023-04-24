@@ -1,16 +1,38 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-  <h1>What Do you need to pack</h1>
+{% load widget_tweaks %}
 
-  <form action="" method="POST">
+<section class="py-4 py-xl-5">
+  <div class="container">
+      <div class="row mb-5">
+          <div class="col-md-8 col-xl-6 text-center mx-auto mb-5">
+  <h1>What do you need to bring?</h1>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-5">
+            <div class="card-body d-flex flex-column align-items-center fw-bold py-3">
+              <div class="card-icon-top mb-3 align-items-center">
+                {%load static%}
+                <img src="{% static 'main_app/luggage.png' %}" height="150" width="150">
 
-    {% csrf_token %}
-    <table>
-      <input type="hidden" name="festival_id" value="">
 
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
+              </div>
+              <form action="" method="POST">
+                 {% csrf_token %}
+                 <div class="mb-3 py-3">
+                  <input type="hidden" name="festival_id" value="">
+                  {{ form.as_div }}
+                  <div class="d-grid gap-2 mx-auto my-4 ">
+                    <input type="submit" value="Add" class="btn btn-primary btn-lg">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+
 {% endblock %}
