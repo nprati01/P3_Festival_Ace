@@ -3,13 +3,13 @@
 -Nicole Prati
 
 ## Summary:
--Festival Ace is a festival planning app. It houses a database with all of the festivals world wide. The app is designed to allow a user to:
--View All festivals on the Festivals index page
-_Log in and:
--View Individual festival deatail page and add it to their own My Festival Page
--Create/Edit/update tasks related to the festival they are planning to go to
--Create/Edit/update suitcase/packing items  related to the festival they are planning to go to
--Delete festival planning pages if they are no longer planning on attenting
+- Festival Ace is a festival planning app. It houses a database with all of the festivals world wide. The app is designed to allow a user to:
+- View All festivals on the Festivals index page
+- Log in and:
+- View Individual festival deatail page and add it to their own My Festival Page
+- Create/Edit/update tasks related to the festival they are planning to go to
+- Create/Edit/update suitcase/packing items  related to the festival they are planning to go to
+- Delete festival planning pages if they are no longer planning on attenting
 
 - ## Screenshot(s):
 
@@ -17,13 +17,13 @@ _Log in and:
 <img src="main_app/static/main_app/home-page.png" alt="Home Page" width="50%" height="50%">
 
 ## All Festivals Page
-<img src="main_app/static/main_app/All-festivals.png" alt="All Festivals" width="50%" height="50%">
+<img src="main_app/static/main_app/allfestival.png" alt="All Festivals" width="50%" height="50%">
 
 ## My Festivals Page
 <img src="main_app/static/main_app/my-festivals.png" alt="My Festivals " width="50%" height="50%">
 
 ## Festival Details
-<img src="main_app/static/main_app/MyFestivalDetail.png" alt=" MY festival details" width="50%" height="50%">
+<img src="main_app/static/main_app/myfestdetail.png" alt=" MY festival details" width="50%" height="50%">
 
 ## Add Task
 <img src="main_app/static/main_app/task-page.png" alt="Add task" width="50%" height="50%">
